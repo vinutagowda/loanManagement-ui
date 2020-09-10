@@ -1,0 +1,48 @@
+ <nav class="navbar navbar-dark bg-dark ml-auto">
+
+  <a class="navbar-brand" href="#">
+    <img src="assets/la.png" width="40" height="40" alt="">
+       Loan Management System    
+  </a>
+  </nav>
+   <div class="container col-lg-6">
+    <h1 class="text-center">Login</h1>
+    <div class="card">
+      <div class="card-body">
+        <form #userform="ngForm" class="form-group">
+       <!-- <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+          <div class="alert alert-success" *ngIf='validLogin'>{{successMessage}}</div>-->
+          
+          <div class="form-group">
+            <label for="email">User Name :</label>
+            <input type="text" name="un" [(ngModel)]="users.firstName" class="form-control" id="username"  placeholder="Enter User Name"
+              name="username" #una="ngModel" required="required">
+              <div  *ngIf="(una.touched||una.dirty)&&una.invalid">
+                <small class="text-danger" *ngIf="un.errors.required">Can not be left blank</small>
+            </div>
+         <br>
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" name="pass" [(ngModel)]="users.password" id="password" placeholder="Enter password"
+              name="password" #passw="ngModel" required="required">
+              <div  *ngIf="(passw.touched||passw.dirty)&&passw.invalid">
+                <small class="text-danger" *ngIf="pass.errors.required">Can not be left blank</small>
+            </div>
+         <br>
+
+          </div>
+          <button [disabled]="userform.form.invalid" type="submit" class="btn btn-success" (click)=handleLogin()>Login</button>
+        </form>
+      </div>
+     
+   
+    </div>
+  </div>
+  <div class="footer"> 
+  </div>                              
+
+
+  <!-- (click)=handleLogin()
+  [(ngModel)]="password"
+  [(ngModel)]="userName" -->

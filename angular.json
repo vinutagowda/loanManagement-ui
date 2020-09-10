@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "LoanManagementSystem": {
+    "loan": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/LoanManagementSystem",
+            "outputPath": "dist/loan",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,9 +24,13 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -62,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "LoanManagementSystem:build"
+            "browserTarget": "loan:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "LoanManagementSystem:build:production"
+              "browserTarget": "loan:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "LoanManagementSystem:build"
+            "browserTarget": "loan:build"
           }
         },
         "test": {
@@ -110,15 +114,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "LoanManagementSystem:serve"
+            "devServerTarget": "loan:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "LoanManagementSystem:serve:production"
+              "devServerTarget": "loan:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "LoanManagementSystem"
+    }
+  },
+  "defaultProject": "loan",
+  "cli": {
+    "analytics": "75f7dcbb-f906-4f41-8a48-c7483cc6f5f5"
+  }
 }

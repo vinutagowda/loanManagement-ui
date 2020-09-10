@@ -1,0 +1,133 @@
+<nav class="navbar navbar-dark bg-dark ml-auto">
+    <div>
+      <a class="navbar-brand" href="#">
+        <img src="assets/la.png" width="40" height="40" alt="">
+           Loan Management System    
+      </a>
+    
+    </div>
+    <a class="nav-item nav-link" href="#">Logout</a>
+</nav>
+  <div class="container">
+        <br/>
+        <!-- <div class="row justify-content-center">
+                            <div class="col-12 col-md-10 col-lg-8" >
+                                
+                                    <div class="card-body col-auto no-gutters align-items-center">
+                                         <div class="col-auto">
+                                             <i class="fas fa-search h4 text-body"></i> -->
+                                        <!-- </div>  
+                                        <div class="col">
+                                            <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="enter loan Number">
+                                        </div>
+                                        <div class="col">
+
+                                        </div>
+                                        <div class="col">
+                                          <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="enter first name" >
+                                        </div>
+                                      <div class="col">
+
+                                      </div>
+                                      <div class="col">
+                                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="enter last name" >
+                                      </div>
+                                      <div class="col">
+
+                                      </div>-->
+                                      <form>
+                                        <div class="form-group">
+                                          <label for="exampleInputEmail1">LoanNumber</label>
+                                          <input type="email" class="form-control" id="loanid"  placeholder="Enter loan id">
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="exampleInputPassword1">FirstName</label>
+                                          <input type="password" class="form-control" id="firstName" placeholder="Enter firstName">
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="exampleInputPassword1">lastName</label>
+                                          <input type="password" class="form-control" id="lastName" placeholder="Enter lastName">
+                                        </div>
+
+                                      </form>
+                                      
+                                        <hr>
+                                        <div class="col-auto">
+                                            <button class="btn  btn-success" type="button"  data-toggle="collapse" data-target="#collapseid" aria-expanded="false" aria-controls="collapseid" (click)="findByLoanNumber()">Search</button>
+                                        </div>
+                                        
+                                    </div>
+                                <!-- </div>
+                            </div>
+                        </div>  -->
+                            <div class="collapse" id="collapseid">
+                                <div class="card card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">loanNumber</th>
+                                            <th scope="col">loanAmount</th>
+                                            <th scope="col">loanTerm</th>
+                                            <th scope="col">firstName</th>
+                                            <th scope="col">lastName</th>
+                                            <th scope="col">contactNo</th>
+                                            <th scope="col">status</th>
+                                            <th scope="col">originalDate</th>
+                                            <th scope="col">legalDocument</th>
+                                          </tr>
+                                        </thead>
+                                        <!-- <tbody>
+                                          <tr>
+                                            <th scope="row">{{user.loanNumber}}</th>
+                                            <td>{{user.loanAmount}}</td>
+                                            <td>{{user.loanTerm}}</td>
+                                            <td>{{user.firstName}} </td>
+                                            <td>{{user.contactNo}}</td>
+                                            <td>{{user.status}}</td>
+                                            <td>{{user.originalDate}}</td>
+                                            <td>{{user.legalDocuments}}</td>
+                                          </tr>
+                                          </tbody> -->
+                                         <tbody>
+                                          <tr>
+                                            <th scope="row">101</th>
+                                            <td>200000</td>
+                                            <td>5</td>
+                                            <td>nikhila </td>
+                                            <td>damaraju </td>
+                                            <td>9087657890</td>
+                                            <td>active</td>
+                                            <td>2018-8-8</td>
+                                            <td>Home documents</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">102</th>
+                                            <td>250000</td>
+                                            <td>6</td>
+                                            <td>vinuta </td>
+                                            <td>gowda </td>
+                                            <td>998756324</td>
+                                            <td>active</td>
+                                            <td>2019-10-23</td>
+                                            <td>Home documents</td>
+                                          </tr>
+                                          </tbody> 
+
+                                          </table>
+                                       
+                                </div>
+                              </div>
+                              <div></div>
+                              <div></div>
+                              <div></div>
+                              <div>
+                                <div class="footer"> 
+                                </div>                              
+                                                    
+                            
+                    
+    <!-- </div> -->
+
+    <!-- [(ngModel)]="loanNumber" -->
+
+
