@@ -3,6 +3,7 @@ export class Search {
     public loanAmount:number;
     public loanTerm:number;
     public firstName:String;
+    public lastName:String;
     public contactNo:number;
     public status:String;
     public originalDate:Date;

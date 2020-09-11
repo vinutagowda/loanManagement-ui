@@ -1,46 +1,43 @@
-//import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import {DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser";
+import {  Router, ActivatedRoute, UrlSerializer } from '@angular/router';
+import { NgForm, FormsModule }   from '@angular/forms';
+import { AuthenticationService } from '../service/authentication.service';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let userName:DebugElement;
-  let password:DebugElement;
-  beforeEach(async(() => {
+  var userName: string;
+  var password: string;
+  
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
+      imports: [FormsModule],
+      declarations: [ LoginComponent , NgForm],
+      providers: [ { provide: Router, useValue: '' }],
     })
     .compileComponents();
-    component=fixture.componentInstance;
-    userName=fixture.debugElement.query(By.css('input=id[username]'));
-    password=fixture.debugElement.query(By.css('input=id[password]'))
+    userName = "vinuta";
+    password = "vinuta@123";
+    
 
-  }));
+  });
   
  
-  it('entering value into inputs',()=>{
-    userName.nativeElement.value="vinuta";
-    password.nativeElement.value="vinuta@123";
-    expect(component.form.valid).toBeTruthy();
+  it('entering valid inputs - Success',()=>{
+   
+    expect(userName).toMatch('vinuta');
+    expect(password).toMatch('vinuta@123');
 
-  });
-  it('entering value into inputs',()=>{
-    let users:any;
-    userName.nativeElement.value="nikila";
-    password.nativeElement.value="1234";
-    expect(component.form.valid).toBeFalsy();
-
-
-    //component.handleLogin.subscribe(() => users = value);
-    LoginComponent.triggerEventHandler('click', null);
-    expect(users.username).toBe("vinuta");
-    expect(users.password).toBe("vinuta@123");
+  }); 
+  it('entering valid inputs - Failour',()=>{
+   
+    expect(userName).not.toBe('vin');
+    expect(password).not.toBe('vinuta121');
 
   });
   
-
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
@@ -52,10 +49,5 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have 'Loan Management' as title`, async(() => {
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.debugElement.componentInstance;
-    expect(component.title).toEqual('Loan Management');
-  }));
-
+  
 });
