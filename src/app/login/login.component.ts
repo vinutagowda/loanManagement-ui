@@ -9,6 +9,9 @@ import { AuthenticationService } from '../service/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  needsLogin(): any {
+    throw new Error("Method not implemented.");
+  }
   user: Users = new Users();
   errorMessage:'Invalid user';
   invalidlogin= false;

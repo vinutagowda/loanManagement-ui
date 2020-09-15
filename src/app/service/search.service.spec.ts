@@ -1,18 +1,24 @@
 import { TestBed } from '@angular/core/testing';
-
+ 
 import { SearchService } from './search.service';
 import { Router } from '@angular/router';
-
+import {HttpClientModule} from '@angular/common/http';
+ 
 describe('SearchService', () => {
   let service: SearchService;                
   var loanNumber: number;
   var firstName: string;
    var lastName:string;
-
+ 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientModule],
+    });
     service = TestBed.inject(SearchService);
-
+    loanNumber = 102;
+    firstName = "vinuta";
+    lastName = "gowda";
+ 
   });
   // .compileComponents();
   // loanNumber: 102;

@@ -10,6 +10,7 @@ import { AppComponent } from '../app.component';
 export class AuthenticationService {
 
   private router: Router;
+
   constructor(public http: HttpClient) { }
   public errorMessage = '';
   authenticated = false;

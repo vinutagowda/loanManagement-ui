@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SearchService {
-  private baseUrl="http://localhost:9999/loan";
+  private baseUrl="http://localhost:9898/loan";
   
   constructor(private http:HttpClient) {
     
@@ -16,10 +16,10 @@ export class SearchService {
       return this.http.get(`${this.baseUrl}/num/${loanNumber}`);
     }
     getByFname(firstName: string): Observable<any> {
-      return this.http.get(`${this.baseUrl}/name/${firstName}`);
+      return this.http.get(`${this.baseUrl}/get/${firstName}`);
     }
     getByLname(lastName: string): Observable<any> {
-      return this.http.get(`${this.baseUrl}/get/${lastName}`);
+      return this.http.get(`${this.baseUrl}/name/${lastName}`);
     }
 
   }

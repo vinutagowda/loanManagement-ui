@@ -5,17 +5,21 @@ import {By} from "@angular/platform-browser";
 import {  Router, ActivatedRoute, UrlSerializer } from '@angular/router';
 import { NgForm, FormsModule }   from '@angular/forms';
 import { AuthenticationService } from '../service/authentication.service';
+import { HttpClientModule } from '@angular/common/http';
 describe('LoginComponent', () => {
   let component: LoginComponent;
+  
+
   let fixture: ComponentFixture<LoginComponent>;
   var userName: string;
   var password: string;
   
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
+      imports: [FormsModule,HttpClientModule] ,
+     
       declarations: [ LoginComponent , NgForm],
-      providers: [ { provide: Router, useValue: '' }],
+      providers: [ { provide: Router,useValue: '' }],
     })
     .compileComponents();
     userName = "vinuta";
