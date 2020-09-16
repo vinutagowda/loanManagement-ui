@@ -10,9 +10,8 @@ import { AppComponent } from '../app.component';
 export class AuthenticationService {
 
   private router: Router;
-
   constructor(public http: HttpClient) { }
-  public errorMessage = '';
+  public errorMessage = 'Invalid login';
   authenticated = false;
   authenticate(credentials, callback) {
 
@@ -35,12 +34,10 @@ export class AuthenticationService {
 
 }
   public logIn(user: Users) {
-    // console.log(user);
     let headers = new HttpHeaders();
     headers.set('Accept', 'application/json');
     const base64Credential: string = btoa( user.username + ':' + user.password);
     headers.set( 'Authorization', 'Basic ' + base64Credential);
-    // console.log(headers);
 
     return this.http.get(AppComponent.baseUrl+ '/basicauth', {headers: headers});
   }

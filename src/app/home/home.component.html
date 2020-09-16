@@ -1,89 +1,91 @@
 <nav class="navbar navbar-dark bg-dark ml-auto">
-    <div>
-      <a class="navbar-brand" href="#">
-        <img src="assets/la.png" width="40" height="40" alt="">
-           Loan Management System    
-      </a>
-    
-    </div>
-    <li><button  (click)="logOut()"> LogOut</button></li>
-  </nav>
-  <div class="container">
-        <br/>
-                                    <form>
-                                        <div class="form-group">
-                                          <label>LoanNumber</label>
-                                          <input class="form-control" id="loanid" name="loanNumber" [(ngModel)]="loanNumber" placeholder="Enter loan id">
-                                        </div>
-                                        <div class="form-group">
-                                          <label>FirstName</label>
-                                          <input  class="form-control" id="firstName" name="firstName" [(ngModel)]="firstName" placeholder="Enter firstName">
-                                        </div>
-                                        <div class="form-group">
-                                          <label>lastName</label>
-                                          <input class="form-control" id="lastName"  name="lastName" [(ngModel)]="lastName"  placeholder="Enter lastName">
-                                        </div>
+  <div>
+    <a class="navbar-brand" href="#">
+      <img src="assets/la.png" width="40" height="40" alt="">
+         Loan Management System    
+    </a>
+  
+  </div>
+  <li><button  (click)="logOut()"> LogOut</button></li>
+</nav>
+<div class="container">
+      <br/>
+                                  <form>
+                                      <div class="form-group">
+                                        <label>LoanNumber</label>
+                                        <input class="form-control" id="loanid" name="loanNumber" [(ngModel)]="search.loanNumber" placeholder="Enter loan id">
+                                      </div>
+                                      <div class="form-group">
+                                        <label>FirstName</label>
+                                        <input  class="form-control" id="firstName" name="firstName" [(ngModel)]="search.firstName" placeholder="Enter firstName">
+                                      </div>
+                                      <div class="form-group">
+                                        <label>lastName</label>
+                                        <input class="form-control" id="lastName"  name="lastName" [(ngModel)]="search.lastName"  placeholder="Enter lastName">
+                                      </div>
 
-                                      </form>
+                                    </form>
+                                    
+                                      <hr>
+                                      <div class="col-auto">
+                                          <button class="btn  btn-success" type="button"   (click)="OnClick()">Search</button>
+                                      </div>
                                       
-                                        <hr>
-                                        <div class="col-auto">
-                                            <button class="btn  btn-success" type="button"   (click)="OnClick()">Search</button>
-                                        </div>
-                                        
-                                    </div>
-                                <!-- </div>
+                                  </div>
+                              <!-- </div>
+                          </div>
+                      </div>  -->
+                          <!-- <div class="collapse" id="collapseid"> -->
+                            <div>
+                              <div class="card card-body" *ngIf="user && !(error)">
+                                <div class="alert alert-success"  *ngIf='valid'>Loan Details Found</div>  
+                                <table class="table table-striped">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">loanNumber</th>
+                                          <th scope="col">loanAmount</th>
+                                          <th scope="col">loanTerm</th>
+                                          <th scope="col">firstName</th>
+                                          <th scope="col">lastName</th>
+                                          <th scope="col">contactNo</th>
+                                          <th scope="col">status</th>
+                                          <th scope="col">originalDate</th>
+                                          <th scope="col">legalDocument</th>
+                                        </tr>
+                                      </thead>
+                                       <tbody>
+                                        <tr>
+                                          <td>{{user.loanNumber}}</td>
+                                          <td>{{user.loanAmount}}</td>
+                                          <td>{{user.loanTerm}}</td>
+                                          <td>{{user.firstName}} </td>
+                                          <td>{{user.lastName}} </td>
+                                          <td>{{user.contactNo}}</td>
+                                          <td>{{user.status}}</td>
+                                          <td>{{user.originalDate}}</td>
+                                          <td>{{user.legalDocuments}}</td>
+                                        </tr>
+                                        </tbody> 
+                                        </table>
+                                      </div>
+                                       <!-- <ng-template #elseblock><h4> {{errorMessage}}</h4></ng-template>   -->
+
+                                       <div class="alert alert-danger"  *ngIf='error'>{{errorMessage}}</div>  
+
+
+
+     
+                                     
                             </div>
-                        </div>  -->
-                            <!-- <div class="collapse" id="collapseid"> -->
-                              <div>
-                                <div class="card card-body" *ngIf="user ;else elseblock">
-                                  <h4>Loan Details Fetched....</h4>
-                                    <table class="table table-striped">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">loanNumber</th>
-                                            <th scope="col">loanAmount</th>
-                                            <th scope="col">loanTerm</th>
-                                            <th scope="col">firstName</th>
-                                            <th scope="col">lastName</th>
-                                            <th scope="col">contactNo</th>
-                                            <th scope="col">status</th>
-                                            <th scope="col">originalDate</th>
-                                            <th scope="col">legalDocument</th>
-                                          </tr>
-                                        </thead>
-                                         <tbody>
-                                          <tr>
-                                            <td>{{user.loanNumber}}</td>
-                                            <td>{{user.loanAmount}}</td>
-                                            <td>{{user.loanTerm}}</td>
-                                            <td>{{user.firstName}} </td>
-                                            <td>{{user.lastName}} </td>
-                                            <td>{{user.contactNo}}</td>
-                                            <td>{{user.status}}</td>
-                                            <td>{{user.originalDate}}</td>
-                                            <td>{{user.legalDocuments}}</td>
-                                          </tr>
-                                          </tbody> 
-                                          </table>
-                                        </div>
-                                        <ng-template #elseblock><h4> User Not Found...</h4></ng-template>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div>
 
-
-
-
-       
-                                       
-                              </div>
-                              <div></div>
-                              <div></div>
-                              <div></div>
-                              <div>
-                                <!-- <div class="footer"> 
-                                </div>                               -->
-                                                                                    
-                                
-                    
+                               <!-- <div class="footer"> 
+                              </div>                               
+                                                                                   -->
+                              
+                  
 
 

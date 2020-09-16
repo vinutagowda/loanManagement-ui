@@ -11,13 +11,15 @@ describe('HomeComponent', () => {
   var loanNumber: number;
   var firstName: string;
    var lastName:string;
- 
+   let mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  };
  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports:[HttpClientModule],
       declarations: [ HomeComponent ],
-      providers: [ { provide: Router, useValue: '' },HomeComponent],
+      providers: [ { provide: Router, useValue: mockRouter },HomeComponent],
     })
     component = TestBed.inject(HomeComponent);
     loanNumber = 102;
@@ -29,37 +31,47 @@ describe('HomeComponent', () => {
  
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
+    
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
  
-  
-    it("loan details fetched - with loan number",()=>{
-      if(loanNumber){
-       
-      //  expect(loanNumber).toEqual(102);
-      //  expect(firstName).toMatch('vinuta');
-      //  expect(lastName).toMatch('gowda');
-      }
+  it("testing logout",()=>{
+    component.logOut();
+    expect(mockRouter.navigate).toHaveBeenCalledWith(['']);
  
-    });
-    it("loan details fetched - with first name",()=>{
-      if(firstName){
-       
-      // expect(firstName).toMatch('vinuta');
-      // expect(loanNumber).toEqual(102);
-      // expect(lastName).toMatch('gowda');
-      }
-    });
+  });
+    // it("loan details fetched - with loan number",()=>{
+    //   component.loanNumber = 102;
+    //   component.OnClick();
+    //   expect(component.message).toBe('Loan details fetched'); 
+    // });
+    // it("not able to fetch loan details - with loan number",()=>{
+    //   component.loanNumber = undefined;
+    //   component.OnClick();
+    //   expect(component.message).not.toBe('Loan details fetched'); 
+    // });
+    // it("loan details fetched - with first name",()=>{
+    //   component.firstName = 'vinuta';
+    //   component.OnClick();
+    //   expect(component.message).toBe('Loan details fetched'); 
+    // });
+    // it("not able to fetch loan details - with first name",()=>{
+    //   component.firstName = undefined;
+    //   component.OnClick();
+    //   expect(component.message).not.toBe('Loan details fetched'); 
+    // });
   
-    it("loan details fetched - with last name",()=>{
-      if(lastName){
-       
-      //   expect(firstName).toMatch('vinuta');
-      // expect(loanNumber).toEqual(102);
-      // expect(lastName).toMatch('gowda');
-      }
-    });
+    // it("loan details fetched - with last name",()=>{
+    //   component.lName = 'gowda';
+    //   component.OnClick();
+    //   expect(component.message).toBe('Loan details fetched'); 
+    // });
+    // it("not able to fetch loan details - with last name",()=>{
+    //   component.lastName = undefined;
+    //   component.OnClick();
+    //   expect(component.message).not.toBe('Loan details fetched'); 
+    // });
     it('should create', () => {
       expect(component).toBeTruthy();
     });

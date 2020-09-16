@@ -1,9 +1,10 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { SearchService } from '../service/search.service';
 import { FormGroup } from '@angular/forms';
-import { Users } from '../model/users';
+import { Search } from '../model/search';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../service/authentication.service';
+import { Users } from '../model/users';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +12,12 @@ import { AuthenticationService } from '../service/authentication.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  loanNumber : number;
-  firstName :string;
-  lastName:string;
-  user : any;
-  message: string;
+search:Search=new Search();
+  valid=false;
+  error=false;
+  errorMessage="No results found";
   currentUser: Users;
+  user: any;
 
   constructor(private service : SearchService,
     public authService: AuthenticationService,
@@ -25,6 +26,9 @@ export class HomeComponent implements OnInit {
 
       }
   ngOnInit() {
+    this.error=false;  
+      this.search=new Search();
+      this.user=null;
   }
 
   logOut() {
@@ -33,22 +37,45 @@ export class HomeComponent implements OnInit {
   }
 
   public OnClick(){
-       if(this.loanNumber ){
-        this.message="Loan details fetched"
-       let response = this.service.getLoanDetails(this.loanNumber);
-       response.subscribe(data => this.user = data);
+       if(this.search.loanNumber){
+       let response = this.service.getLoanDetails(this.search.loanNumber);
+       response.subscribe(data =>
+        {if(data==null){this.error=true}
+        else{
+        this.user=data
+        this.valid=true
+        this.error=false}
+      });
+
+       
        }
-       else if(this.firstName ){
-        this.message="Loan details fetched"
-        let response = this.service.getByFname(this.firstName);
-        response.subscribe(data => this.user = data);
+       else if(this.search.firstName ){
+        let response = this.service.getByFname(this.search.firstName);
+        response.subscribe(data =>
+          {if(data==null){this.error=true}
+          else{
+          this.user=data
+          this.valid=true
+          this.error=false}
+        });
+  
       }
-      else if(this.lastName ){
-        this.message="Loan details fetched"
-        let response = this.service.getByLname(this.lastName);
-        response.subscribe(data => this.user = data);  
-      }  
+       else if(this.search.lastName ){
+        let response = this.service.getByLname(this.search.lastName);
+        response.subscribe(data =>
+          {if(data==null){this.error=true}
+          else{
+          this.user=data
+          this.valid=true
+          this.error=false}
+        });
     
+      } 
+        // else{
+        //  this.error=true;
+        // }
+       
+
   }
 
 }
