@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   success:''
   invalidlogin= false;
   validlogin=false;
+  resp: any;
   constructor(private authService: AuthenticationService, private router: Router) { }
   ngOnInit() {
   }
@@ -21,11 +22,10 @@ export class LoginComponent implements OnInit {
     if(this.validlogin=true){
     this.authService.authenticate(this.user, (e) => {
     this.router.navigateByUrl('/home');
-      let resp: any;
-      resp = e.principal;
-      if (resp) {
+      this.resp = e.principal;
+      if (this.resp) {
         this.validlogin=true;
-        sessionStorage.setItem('currentUser', JSON.stringify(resp));
+        sessionStorage.setItem('currentUser', JSON.stringify(this.resp));
       }
     });
   

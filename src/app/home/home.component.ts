@@ -18,6 +18,7 @@ search:Search=new Search();
   errorMessage="No results found";
   currentUser: Users;
   user: any;
+  response:any;
 
   constructor(private service : SearchService,
     public authService: AuthenticationService,
@@ -25,6 +26,7 @@ search:Search=new Search();
       this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
 
       }
+
   ngOnInit() {
     this.error=false;  
       this.search=new Search();
@@ -38,8 +40,8 @@ search:Search=new Search();
 
   public OnClick(){
        if(this.search.loanNumber){
-       let response = this.service.getLoanDetails(this.search.loanNumber);
-       response.subscribe(data =>
+       this.response = this.service.getLoanDetails(this.search.loanNumber);
+      this.response.subscribe(data =>
         {if(data==null){this.error=true}
         else{
         this.user=data
@@ -50,8 +52,8 @@ search:Search=new Search();
        
        }
        else if(this.search.firstName ){
-        let response = this.service.getByFname(this.search.firstName);
-        response.subscribe(data =>
+        this.response = this.service.getByFname(this.search.firstName);
+        this.response.subscribe(data =>
           {if(data==null){this.error=true}
           else{
           this.user=data
@@ -61,8 +63,8 @@ search:Search=new Search();
   
       }
        else if(this.search.lastName ){
-        let response = this.service.getByLname(this.search.lastName);
-        response.subscribe(data =>
+        this.response = this.service.getByLname(this.search.lastName);
+        this.response.subscribe(data =>
           {if(data==null){this.error=true}
           else{
           this.user=data

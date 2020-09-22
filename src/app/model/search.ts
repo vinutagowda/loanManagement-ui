@@ -8,5 +8,6 @@ export class Search {
     public status:string;
     public originalDate:Date;
     public legalDocuments:string;
+  
 
 }
